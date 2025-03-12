@@ -39,9 +39,9 @@ function Home() {
         <p>
           {" "}
           Welcome to the BlogSphere{" "}
-          <a href="/add-post" className="text-blue-600">
+          <Link to='/add-post' className="text-blue-600">
             create
-          </a>{" "}
+          </Link>{" "}
           your blog and publish
         </p>
       </div>
