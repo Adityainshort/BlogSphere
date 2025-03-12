@@ -26,7 +26,7 @@ function Home() {
           </Link>{" "}
           or
           <Link to={'/signup'}className="text-blue-500">
-            SignUp
+            Signup
           </Link>{" "}
           to see the posts .
         </h1>
