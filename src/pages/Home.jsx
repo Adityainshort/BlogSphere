@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import appwriteService from "../appwrite/config";
 import { Container, PostCard ,Loader} from "../components";
+import { useNavigate ,Link} from 'react-router-dom'
 
 
 function Home() {
@@ -20,14 +21,13 @@ function Home() {
     return (
       <div className="border w-full min-h-[50vh] bg-black-200 flex justify-center items-center">
         <h1 className="text-2xl  font-bold">
-          <a href="/login" className="text-blue-500">
+          <Link to={'/login'}className="text-blue-500">
             Login
-          </a>{" "}
+          </Link>{" "}
           or
-          <a href="/signup" className="text-blue-500">
-            {" "}
-            Signup{" "}
-          </a>
+          <Link to={'/signup'}className="text-blue-500">
+            SignUp
+          </Link>{" "}
           to see the posts .
         </h1>
       </div>
