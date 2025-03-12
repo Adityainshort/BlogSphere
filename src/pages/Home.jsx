@@ -24,7 +24,7 @@ function Home() {
           <Link to={'/login'}className="text-blue-500">
             Login
           </Link>{" "}
-          or
+          or{" "}
           <Link to={'/signup'}className="text-blue-500">
             Signup
           </Link>{" "}
