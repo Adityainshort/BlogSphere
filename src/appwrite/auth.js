@@ -20,7 +20,7 @@ export class Authservice {
         }
         catch(e){
             console.log("Create Account Error", e);
-            return e;
+            return false;
         }
     }
     async login(email, password ) {
@@ -32,7 +32,7 @@ export class Authservice {
         }
         catch(e){
             console.log("Login Error", e);
-            return e;
+            return false;
         }
     }
 

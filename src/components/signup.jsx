@@ -10,10 +10,11 @@ import authservice from '../appwrite/auth'
 function Signup() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [loading,setLoading] = useState(false);
     const [error,setError] = useState("");
-    const {register,handleSubmit}= useForm();
-
+    const {register,handleSubmit,formState: {errors}}= useForm();
     const onsubmit = async(data)=>{
+        setLoading(true);
         setError("")
         try {
             const sesion  = await authservice.createAccount(data.email , data.password ,data.name);
@@ -23,10 +24,13 @@ function Signup() {
                     dispatch(authlogin({userData:user}));
                 }
                 navigate("/")
+            }else{
+                setError("Account creation failed")
             }
         } catch (error) {
             setError(error.message)
         }
+        setLoading(false);
     }
 
   return (
@@ -77,12 +81,24 @@ function Signup() {
                   type="password"
                   placeholder="Create your password"
                   {...register("password", {
-                      required: true,
+                      required: "Password is required",
+                      minLength: {
+                          value: 8,
+                          message: "Password must be at least 8 characters long",
+                      },
                   })}
                   />
-                  <Mybutton
+                  {errors.password && <p className="text-red-600">{errors.password.message}</p>}
+                  {(loading)?(
+                    <Mybutton
+                    type="loading"
+                  ></Mybutton>
+                  ):(
+                    <Mybutton
                   type="submit"
                   >Sign up</Mybutton>
+                  )}
+                  
               </div>
           </form>
           </div>

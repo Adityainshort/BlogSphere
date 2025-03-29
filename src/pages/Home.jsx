@@ -50,14 +50,14 @@ function Home() {
         </div>
       ) : (
         <div>
-          <div className="ml-2 text-2xl font-bold m-2">Posts</div>
+          <div className="ml-2 text-2xl font-bold m-2">Your Posts</div>
           <hr className="mb-4" />
           <div className="flex flex-wrap">
             {posts
               .filter((post) => userData && post.userId === userData?.userId)
               .map((post) => (
-                <div key={post.$id} className="p-2 w-1/4">
-                  <PostCard {...post} />
+                <div key={post?.$id} className='p-2 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 flex-shrink-0 '>
+                  <PostCard {...post}  />
                 </div>
               ))}
           </div>
